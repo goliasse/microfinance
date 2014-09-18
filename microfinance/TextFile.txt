@@ -1,0 +1,85 @@
+﻿http://forums.asp.net/t/1532027.aspx?Display+results+of+postback+in+jquery+dialog
+Dialog Box
+ 0cv3DDmP1c7T
+ 
+ 
+ if($datLoanType == 2 || $datLoanType == 3)
+ {
+				copy_to_contacts($_GET["datApplicationID"], $_GET["datClientID"]);
+				update_ClientName($_GET['datClientID'], $datClientName);
+			}
+			if($datLoanType == 1 || $datLoanType == 6){
+				delete_from_contacts($_GET["datApplicationID"], $_GET["datClientID"]);
+				update_ClientName2($_GET['datClientID']);
+			}
+			
+function copy_to_contacts($app_id, $client_id){
+		
+				$sql = "SELECT * FROM tbl_client WHERE datID = $client_id";
+				$result = mysql_query($sql);
+				
+				if(!($result)){
+				?>
+                	<script>
+						alert("<?php echo "1 => ".mysql_error(); ?>")
+					</script>
+                <?php
+				}
+				$row=mysql_fetch_array($result);
+				 
+				$datFullName = $row["datFirstName"]." ".$row["datMiddleName"]." ".$row["datSurname"];
+				
+				$sql2 = sprintf(
+					"INSERT INTO tbl_contact_person 
+									(datClientID ,datApplicationID, datFullName, datMobileNumber, datTelephoneNumber, datEmailAddress, 
+									 datPhysicalAddress) 
+									VALUES (%s, %s, %s, %s, %s, %s, %s)",
+							   GetSQLValueString($client_id, "int"),
+							   GetSQLValueString($app_id, "int"),			   
+							   GetSQLValueString($datFullName, "text"),
+							   GetSQLValueString($row["datMobileNumber1"], "text"),
+							   GetSQLValueString($row["datHomeTelephoneNumber"], "text"),
+							   GetSQLValueString($row["datEmailAddress"], "text"),
+							   GetSQLValueString($row["datCurrentResidentialAddress"], "text"));				   
+				$result2 = mysql_query($sql2);
+				if(!($result2)){
+				?>
+                	<script>
+						alert("<?php echo "2 => ".mysql_error(); ?>")
+					</script>
+                <?php
+				}							
+	}
+	
+	function delete_from_contacts($app_id, $client_id){
+		
+				$sql = "DELETE FROM tbl_contact_person WHERE datClientID = $client_id AND datApplicationID = $app_id";
+				$result = mysql_query($sql);	
+				if(!($result)){
+				?>
+                	<script>
+						alert("<?php echo "3 => ".mysql_error(); ?>")
+					</script>
+                <?php
+				}								
+	}	
+	
+	
+	
+function update_ClientName($ClientID,$CompanyName) {
+	$sql = sprintf("UPDATE tbl_client SET datClientName=%s  WHERE datID=$ClientID",
+	GetSQLValueString($CompanyName, "text"));								
+	$result = mysql_query($sql);
+}	
+
+function update_ClientName2($ClientID) {
+	
+	$sql = "SELECT * FROM tbl_client WHERE datID = $ClientID";
+	$result = mysql_query($sql);
+	$row=mysql_fetch_array($result);				 
+	$datFullName = $row["datFirstName"]." ".$row["datMiddleName"]." ".$row["datSurname"];	
+	
+	$sql = sprintf("UPDATE tbl_client SET datClientName=%s  WHERE datID=$ClientID",
+	GetSQLValueString($datFullName, "text"));								
+	$result = mysql_query($sql);
+}

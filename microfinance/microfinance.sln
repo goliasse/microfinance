@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "microfinance", ".", "{8D0D094A-0F64-4C54-ADF5-F1CE3FE83C1D}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		Debug.AspNetCompiler.VirtualPath = "/microfinance"
+		Debug.AspNetCompiler.PhysicalPath = "..\microfinance\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\microfinance\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/microfinance"
+		Release.AspNetCompiler.PhysicalPath = "..\microfinance\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\microfinance\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "34391"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D0D094A-0F64-4C54-ADF5-F1CE3FE83C1D}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{8D0D094A-0F64-4C54-ADF5-F1CE3FE83C1D}.Debug|.NET.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

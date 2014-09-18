@@ -1,0 +1,234 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="main.master.cs" Inherits="main" %>
+<%--<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" media="screen" href="asset/css/bootstrap.min.css">
+        <link rel="stylesheet" media="screen" href="asset/css/bootstrap-theme.min.css">
+
+        <!-- Bootstrap Admin Theme -->
+        <link rel="stylesheet" media="screen" href="asset/css/bootstrap-admin-theme.css">
+        <link rel="stylesheet" media="screen" href="asset/css/bootstrap-admin-theme-change-size.css">
+
+        <!-- Vendors -->
+        <link rel="stylesheet" media="screen" href="asset/vendors/easypiechart/jquery.easy-pie-chart.css">
+        <link rel="stylesheet" media="screen" href="asset/vendors/easypiechart/jquery.easy-pie-chart_custom.css">
+        <link rel="stylesheet" media="screen" href="asset/vendors/jGrowl/jquery.jgrowl.css">
+        
+        <!-- JQuery Datepicker UI -->
+        <link rel="stylesheet" media="screen" href="asset/css/ui.datepick.css">
+        <link rel="stylesheet" media="screen" href="asset/css/smoothness.datepick.css">
+
+        <!-- font -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,600,700,300,800' rel='stylesheet' type='text/css'>
+        
+        <!-- Xtra Style -->
+        <link rel="stylesheet" type="text/css" media="screen" href="asset/css/xtraStyle.css" />
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+           <script type="text/javascript" src="asset/js/html5shiv.js"></script>
+           <script type="text/javascript" src="asset/js/respond.min.js"></script>
+        <![endif]-->
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+     <script type="text/javascript" src="../../asset/js/jquery-2.0.3.min.js"></script>
+     <script type="text/javascript" src="../asset/js/jquery-2.0.3.min.js"></script>
+     <script type="text/javascript" src="../../../asset/js/jquery-2.0.3.min.js"></script>
+     <!-- JQuery Block UI -->
+     <script type="text/javascript" src="../asset/js/jquery.blockUI.js"></script>
+     <script type="text/javascript" src="../../asset/js/jquery.blockUI.js"></script>
+     <script type="text/javascript" src="../../../asset/js/jquery.blockUI.js"></script>
+     <!-- JQuery Datepicker UI -->
+     <script type="text/javascript" src="../asset/js/jquery.plugin.js"></script>
+     <script type="text/javascript" src="../../asset/js/jquery.plugin.js"></script>
+     <script type="text/javascript" src="../../../asset/js/jquery.plugin.js"></script>
+     
+     
+     <script type="text/javascript" src="../asset/js/jquery.datepick.js"></script>
+     <script type="text/javascript" src="../../asset/js/jquery.datepick.js"></script>
+     <script type="text/javascript" src="../../../asset/js/jquery.datepick.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="bootstrap-admin-with-small-navbar">
+    <form id="form1" runat="server">
+    
+    <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="True"></asp:ScriptManager>
+    <!-- small navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar-sm" role="navigation">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+<%--                    <ul class="nav navbar-nav navbar-left bootstrap-admin-theme-change-size">
+                        <li class="text">Change size:</li>
+                        <li><a class="size-changer small">Small</a></li>
+                        <li><a class="size-changer large active">Large</a></li>
+                    </ul>--%>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Reminders <i class="glyphicon glyphicon-bell"></i></a>
+                        </li>
+                        <li>
+                            <asp:LinkButton PostBackUrl="~/backend/Default.aspx" ID="settings" runat="server"><i class="glyphicon glyphicon-cog"></i>Settings</asp:LinkButton>
+                        </li>
+                        <li class="dropdown">
+                            <asp:LinkButton ID="lkbUsername" role="button" class="dropdown-toggle" data-hover="dropdown" runat="server"><i class="glyphicon glyphicon-user"></i> Username <i class="caret"></i></asp:LinkButton>
+                            
+                            <ul class="dropdown-menu">
+                                <li><asp:LinkButton PostBackUrl="~/pages/profile.aspx" ID="profile" runat="server">Profile</asp:LinkButton></li>
+                                <li><asp:LinkButton PostBackUrl="~/pages/changepassword.aspx" ID="editpassword" runat="server">Change Password</asp:LinkButton></li>
+                                <li><asp:LinkButton ID="changerole" runat="server">Change Role</asp:LinkButton></li>
+                                <li role="presentation" class="divider"></li>
+                                <li><asp:LinkButton ID="btnLogout" PostBackUrl="~/logout.aspx" runat="server">Logout</asp:LinkButton></li>
+                            </ul> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- main / large navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><span runat="server" id="lblCompany">SA 365 Microfinance Solution</span></a>
+                    </div>
+                </div>
+            </div><!-- /.container -->
+        </nav>
+        
+        <div class="container" style="min-height:400px">
+            <div class="row">
+                    <!-- left, vertical navbar -->
+                    <div class="col-md-2 bootstrap-admin-col-left">
+                        <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+                            <li class="active">
+                               <asp:LinkButton PostBackUrl="~/pages/dashboard.aspx" ID="mblDasboard" runat="server"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</asp:LinkButton>
+                            </li>
+                           <!-- <li class="active">
+                                <asp:LinkButton PostBackUrl="~/pages/registration.aspx" ID="mblReg" runat="server"><i class="glyphicon glyphicon-plus-sign pull-right"></i>   New Client </asp:LinkButton>
+                            </li> -->
+                            <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/clients/clients.aspx" ID="mblClient" runat="server"><span id="clientinfo" runat="server" class="badge pull-right"></span>Client</asp:LinkButton>
+                            </li>
+                            <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/loanapplications.aspx" ID="mblLoanApp" runat="server"><span id="laonappinfo" runat="server" class="badge pull-right"></span>Loan Application </asp:LinkButton>
+                            </li>
+                            <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/invapplications.aspx" ID="mblInvApp" runat="server"><span id="invappinfo" runat="server" class="badge pull-right"></span>Investment Application </asp:LinkButton>
+                            </li>
+                           <!-- <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/loanaccount.aspx" ID="mblLoan" runat="server"><span id="loanaccinfo" runat="server" class="badge pull-right">0</span>Loan Accounts</asp:LinkButton>
+                            </li>
+                             <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/investmentaccount.aspx" ID="mblInvestment" runat="server"><span id="invaccinfo" runat="server" class="badge pull-right"></span>Investment Accounts </asp:LinkButton>
+                            </li>
+                            <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/scheduledpayments.aspx" ID="mblScheduledPayment" runat="server"><span id="schpayinfo" runat="server" class="badge pull-right"></span>Scheduled Payments </asp:LinkButton>
+                            </li>-->
+                            <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/finance/finhome.aspx" ID="mblFinance" runat="server"><span id="financeInfo" runat="server" class="badge pull-right"></span>Finance </asp:LinkButton>
+                            </li>
+                            <li>
+                                 <asp:LinkButton PostBackUrl="~/pages/postdatedcheque.aspx" ID="mblpostdatedcheques" runat="server"><span>Post Dated Cheques</span></asp:LinkButton>
+                            </li>
+                             <li>
+                                  <asp:LinkButton PostBackUrl="~/pages/rejectedapps.aspx" ID="mblRejectedApplications" runat="server">Rejected Applications </asp:LinkButton>
+                            </li>
+                            <%--<li>
+                                <asp:LinkButton ID="mblTransactions" PostBackUrl="~/pages/transactions.aspx" runat="server"><span class="badge pull-right"></span>Transactions</asp:LinkButton>
+                            </li>--%>
+                            <%--<li>
+                                <asp:LinkButton ID="mblApplicationTracker" PostBackUrl="~/pages/applicationtracker.aspx" runat="server"><span class="badge pull-right"></span>Application Tracker</asp:LinkButton>
+                            </li>--%>
+                            <li><asp:LinkButton PostBackUrl="~/pages/reports.aspx" ID="mblReports" runat="server"><span class="glyphicon glyphicon-stats pull-right"></span>Reports</asp:LinkButton> 
+                            </li>
+                            <li>
+                                <asp:LinkButton PostBackUrl="~/pages/support.aspx" ID="mblSupport" runat="server"><span class="glyphicon glyphicon-wrench pull-right"></span>Support</asp:LinkButton>
+                            </li>
+                             <li>
+                                <asp:LinkButton ID="mblLogout" PostBackUrl="~/logout.aspx"  runat="server"><span class="glyphicon glyphicon-off pull-right"></span> Log Out</asp:LinkButton>
+                            </li>
+                        </ul>
+                    </div>
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    
+                    </asp:ContentPlaceHolder>
+             </div>
+        </div>
+   
+        <div class="navbar navbar-footer">
+            <div class="container">
+                <div class="row">
+                    <footer role="contentinfo">
+                        <p class="left">SA 365 Microfinance Solution </p>
+                        <p class="right">&copy; 2013 <a href="#" target="_blank">SA 365</a></p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+       
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script type="text/javascript" src="../asset/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../asset/js/twitter-bootstrap-hover-dropdown.min.js"></script>
+        <script type="text/javascript" src="../asset/js/bootstrap-admin-theme-change-size.js"></script>
+        <script type="text/javascript" src="../asset/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script type="text/javascript" src="../asset/vendors/uniform/jquery.uniform.min.js"></script>
+        <script type="text/javascript" src="../asset/vendors/chosen.jquery.min.js"></script>
+        <script type="text/javascript" src="../asset/vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../asset/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/wysihtml5.js"></script>
+        <script type="text/javascript" src="../asset/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/core-b3.js"></script>
+        <script type="text/javascript" src="../asset/vendors/twitter-bootstrap-wizard/jquery.bootstrap.wizard-for.bootstrap3.js"></script>
+        <script type="text/javascript" src="../asset/vendors/boostrap3-typeahead/bootstrap3-typeahead.min.js"></script>
+        <script type="text/javascript" src="../asset/js/bootstrap-admin-theme-change-size.js"></script>
+        <script type="text/javascript" src="../asset/vendors/jGrowl/jquery.jgrowl.js"></script>
+        
+        <script type="text/javascript" src="../../asset/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../../asset/js/twitter-bootstrap-hover-dropdown.min.js"></script>
+        <script type="text/javascript" src="../../asset/js/bootstrap-admin-theme-change-size.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/uniform/jquery.uniform.min.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/chosen.jquery.min.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/wysihtml5.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/core-b3.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/twitter-bootstrap-wizard/jquery.bootstrap.wizard-for.bootstrap3.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/boostrap3-typeahead/bootstrap3-typeahead.min.js"></script>
+        <script type="text/javascript" src="../../asset/js/bootstrap-admin-theme-change-size.js"></script>
+        <script type="text/javascript" src="../../asset/vendors/jGrowl/jquery.jgrowl.js"></script>
+   
+   
+   
+    </form>
+    
+    <script type="text/javascript">
+            $(function() {
+                 // Easy pie charts
+                $('.easyPieChart').easyPieChart({animate: 1000});
+                $('.datepicker').datepicker();
+                $('.uniform_on').uniform();
+                $('.chzn-select').chosen();
+                $('.textarea-wysihtml5').wysihtml5({
+                    stylesheets: [
+                        'vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/stylesheets/bootstrap-wysihtml5/wysiwyg-color.css'
+                    ]
+                }); 
+                $("input").attr("autocomplete", "off");         
+            });
+           
+     </script>
+</body>
+</html>

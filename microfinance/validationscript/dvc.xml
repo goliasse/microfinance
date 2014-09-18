@@ -1,0 +1,160 @@
+﻿<DynamicValidators>
+	<!--
+	This section contains default values for different types validator controls
+	-->
+	<Defaults>
+		<!--
+		These are default property values that are common to all validator controls
+		-->
+		<Common>
+		<!--
+		These are default property values that are common to all validator controls
+		-->
+			<Property name="ForeColor" value="Red" />
+			<Property name="Display" value="Dynamic" />
+			<Property name="EnableViewState" value="False" />
+		</Common>
+		<!--
+		These are default property values specific to the ValidationSummary controls
+		-->
+		<ValidationSummary>
+			<Property name="EnableClientScript" value="True" />
+			<Property name="Enabled" value="True" />
+			<Property name="HeaderText" value="Please correct the following errors" />
+			<Property name="ShowMessageBox" value="False" />
+			<Property name="ShowSummary" value="True" />
+			<Property name="DisplayMode" value="BulletList" />
+		</ValidationSummary>
+		<!--
+		These are default property values specific to the Compare validator
+		-->
+		<Compare />
+		<!--
+		These are default property values specific to the RequiredField validator
+		-->
+		<RegularExpression>
+			<Property name="Text" value="Allowed chracters are {LegalValues}" />
+			<Property name="ErrorMessage" value="{FriendlyName} can only consist of {LegalValues}" />
+		</RegularExpression>
+		<!--
+		These are default property values specific to the RequiredField validator
+		-->
+		<RequiredField>
+			<Property name="InitialValue" value="" />
+			<Property name="Text" value="This is a required field" />
+			<Property name="ErrorMessage" value="You must enter something for the {FriendlyName}" />
+		</RequiredField>
+		<!--
+		These are default property values specific to the Custom validator
+		-->
+		<Custom>
+			<Property name="EnableClientScript" value="False" />
+		</Custom>
+	</Defaults>
+	<!--
+	This section defines the validator groups
+	A validator group defines a collection of validators and their properties
+	-->
+	<ValidatorSets>
+		<!--
+		This is used for the ValidationSummary
+		-->
+		<ValidatorCollection id="Summary">
+			<Validator type="ValidationSummary" />
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the FirstName
+		-->
+		<ValidatorCollection id="FirstName" FriendlyName="First name" ControlToValidate="TextBoxFirstname">
+			<Validator type="RequiredField" />
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the Gender
+		-->
+		<ValidatorCollection id="Gender" FriendlyName="Gender" ControlToValidate="RadioButtonListGender">
+			<Validator type="RequiredField" />
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the Age
+		-->
+		<ValidatorCollection id="Age" FriendlyName="Age" ControlToValidate="TextBoxAge">
+			<!--
+			We are going to have a RequiredField, Compare and Range validators
+			-->
+			<Validator type="RequiredField" />
+			<Validator type="Compare">
+				<!--
+				This is the Compare validators
+				-->
+				<Property name="Operator" value="DataTypeCheck" />
+				<Property name="Type" value="integer" />
+				<Property name="ErrorMessage" value="Age must be an integer" />
+				<Property name="Text" value="This must be an integer" />
+			</Validator>
+			<Validator type="Range">
+				<!--
+				This is the Rangevalidators
+				-->
+				<Property name="MinimumValue" value="18" />
+				<Property name="MaximumValue" value="200" />
+				<Property name="Type" value="integer" />
+				<Property name="ErrorMessage" value="You must be over 18 to apply" />
+				<Property name="Text" value="Must be over 18" />
+			</Validator>
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the EmailAddress
+		-->
+		<ValidatorCollection id="EmailAddress" FriendlyName="Email address" ControlToValidate="TextBoxEmailAddress">
+			<Validator type="RequiredField" />
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the Passsword
+		-->
+		<ValidatorCollection id="Password" FriendlyName="Password" LegalValues="alphabetic characters and numbers" ControlToValidate="TextBoxPassword">
+			<Validator type="RequiredField" />
+			<Validator type="RegularExpression">
+				<Property name="ValidationExpression" value="[A-Za-z0-9]*" />
+			</Validator>
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the RepeatPassword
+		-->
+		<ValidatorCollection id="RepeatPassword" ControlToValidate="TextBoxRepeatPassword">
+			<Validator type="Compare">
+				<Property name="ControlToCompare" value="TextBoxPassword" />
+				<Property name="ErrorMessage" value="The password and the repeat password must match" />
+				<Property name="Text" value="Does not match password" />
+				<Property name="Operator" value="Equal" />
+			</Validator>
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the SecretQuestion field
+		-->
+		<ValidatorCollection id="SecretQuestion" ControlToValidate="DropDownListSecretQuestion">
+			<Validator type="Compare">
+				<Property name="Type" value="string" />
+				<Property name="ErrorMessage" value="You have to choose a Secret Question" />
+				<Property name="Text" value="Please choose something" />
+				<Property name="Operator" value="NotEqual" />
+				<Property name="ValueToCompare" value="Please select a secret question" />
+			</Validator>
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the SecretQuestion field
+		-->
+		<ValidatorCollection id="SecretAnswer" FriendlyName="Secret answer" ControlToValidate="DropDownListSecretQuestion">
+			<Validator type="RequiredField" />
+		</ValidatorCollection>
+		<!--
+		This is the collection of validator controls to be used for the SecretQuestion field on the ForgottenPassword page
+		-->
+		<ValidatorCollection id="ForgottenPassword_SecretQuestion" FriendlyName="Secret answer" ControlToValidate="DropDownListSecretQuestion">
+			<Validator type="RequiredField" />
+			<Validator type="Custom" ServerValidate="CustomValidator1_ServerValidate">
+				<Property name="ErrorMessage" value="The selected secret question does not match the one used in registration" />
+				<Property name="Text" value="Does not match the registered secret question" />
+			</Validator>
+		</ValidatorCollection>
+	</ValidatorSets>
+</DynamicValidators>

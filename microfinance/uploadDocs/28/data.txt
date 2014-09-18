@@ -1,0 +1,41 @@
+1	Dashboard Button	mblDasboard	Menu	LinkButton
+2	Registration Button	mblReg	Menu	LinkButton
+3	Clients Button	mblClient	Menu	LinkButton
+4	Loan Application Button	mblLoanApp	Menu	LinkButton
+5	Investment Application Button	mblInvApp	Menu	LinkButton
+6	Loan Account Application Button	mblLoan	Menu	LinkButton
+7	Scheduled Payment Button	mblScheduledPayment	Menu	LinkButton
+8	Investment Account Button	mblInvestment	Menu	LinkButton
+9	Post Dated Cheques Button	mblpostdatedcheques	Menu	LinkButton
+10	Transactions Button	mblTransactions	Menu	LinkButton
+11	Application Tracker Button	mblApplicationTracker	Menu	LinkButton
+12	Report Button 	mblReports	Menu	LinkButton
+13	Support Button 	mblSupport	Menu	LinkButton
+14	Rejected Applications	mblRejectedApplications	Menu	LinkButton
+15	Initial Assesment Button	btnInitialAssesment	Loan Applications Menu	LinkButton
+16	Pre Approval Button	btnPreApproval	Loan Applications Menu	LinkButton
+17	Appraisals Button	btnAppraisals	Loan Applications Menu	LinkButton
+18	Risk Assesment Button	btnRiskAssessment	Loan Applications Menu	LinkButton
+19	Legal Assesment Button 	btnLegalAssessment	Loan Applications Menu	LinkButton
+20	Review Button	btnReview	Loan Applications Menu	LinkButton
+21	Approved Loans Button	btnApprovedLoans	Loan Applications Menu	LinkButton
+22	Disbursement Button	btndisbursement	Loan Applications Menu	LinkButton
+23	Approval Button 	btnApproval	Loan Applications Menu	LinkButton
+
+1	Loan Application	2	Loan Application Stage	1/1/2014 12:00:00 AM	1
+2	Initial Assesment	3	Pre Approval Stage	1/1/2014 12:00:00 AM	1
+3	Pre Approved	4	Pre Approved Stage	1/1/2014 12:00:00 AM	1
+4	Appraisal	5	Appraisal Stage	NULL	1
+5	Risk Assessment	6	Risk Stage	NULL	1
+6	Legal Assessment	7	Legal Stage	NULL	1
+7	Approval I	8	Credit Mananger Approval	NULL	1
+8	Approval II	9	COO Approval 	NULL	1
+9	Approval III	10	CEO Approval 	NULL	1
+10	Approval IV	11	Approval IV	NULL	1
+11	Approval V	12	Approval V	NULL	1
+12	Appproved Loans	13	Appproved Loans	NULL	1
+13	Disbursement I	14	Financial Officer	NULL	1
+14	Disbursement II	15	Financial Controller	NULL	1
+15	Disbursement III	16	Cashier	NULL	1
+16	Completed Application	NULL	Completed Applications	NULL	1
+17	Rejected Application	NULL	Rejected Application	NULL	1
